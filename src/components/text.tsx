@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface TextProps {
     textColor: string;
-    text: string
+    text: string;
+    onClick: ()=> void;
 }
 
-const Text: React.FC<TextProps> = ({ textColor, text }) => {
-    const [color, setColor] = useState<string>(textColor);
-    const randomColorURL = `http://www.colr.org/json/color/random`;
+const Text: React.FC<TextProps> = ({ textColor, text, onClick }) => {
+    
 
-    const randomColor = () => {
-        fetch(randomColorURL)
-            .then(res => res.json())
-            .then(data => setColor(`#` + (data.new_color || `000`)));
-    }
-
-    return <Paragraph textColor={color} onClick={e => randomColor()}>{text}</Paragraph>
+    return <Paragraph textColor={textColor} onClick={onClick}>{text}</Paragraph>
 }
 
 export default Text;
