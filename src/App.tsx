@@ -1,25 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Text from '../src/components/text';
+import styled from 'styled-components';
 
 const App: React.FC = () => {
+  const [textColor, setTextColor] = useState<string>('yellow');
+  const [text, setText] = useState<string>('type here');
+
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Text textColor={textColor} text={text}></Text>
+      <input value={text} onChange={e => setText(e.target.value)}></input>
+    </React.Fragment>
+
   );
 }
 
